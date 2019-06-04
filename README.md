@@ -3,13 +3,7 @@ A lab to play with web cache poisoning
 
 ## Varnish
 
-Edit this file:
-
-```
-/etc/systemd/system/varnish.service
-```
-
-Change the `ExecStart` line to this:
+Edit `/etc/systemd/system/varnish.service` and change the `ExecStart` line to this:
 
 ```
 ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :80 -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,256m
