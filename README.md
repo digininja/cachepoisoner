@@ -10,6 +10,9 @@ Edit `/etc/systemd/system/varnish.service` or `/etc/systemd/system/multi-user.ta
 ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :80 -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,256m
 ```
 
+`-a` says to listen on the host:port specified
+`-T` is the management interface - keep this to localhost or set it to `none` to disable it.
+
 Then edit `/etc/varnish/default.vcl` and add the following:
 
 ```
