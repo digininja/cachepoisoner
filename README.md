@@ -1,4 +1,5 @@
-# cachepoisoner
+# Cache Poisoner
+
 A lab to play with web cache poisoning
 
 ## Varnish
@@ -30,3 +31,9 @@ sub vcl_backend_response {
 sub vcl_deliver {
 }
 ```
+
+## References
+
+[Varnish tutorial](https://www.varnish-software.com/wiki/content/tutorials/varnish/varnish_ubuntu.html)
+
+[Burp blog post](https://portswigger.net/blog/practical-web-cache-poisoning)
