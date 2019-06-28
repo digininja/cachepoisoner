@@ -51,6 +51,10 @@ Start with
 revel run -a github.com/digininja/cachepoisoner/
 ```
 
+To remove the built in cookies:
+
+<https://github.com/revel/revel/issues/323>
+
 ## References
 
 [Varnish tutorial](https://www.varnish-software.com/wiki/content/tutorials/varnish/varnish_ubuntu.html)
