@@ -3,5 +3,5 @@ tmp/
 routes/
 
 # Vim swap files
-.swp
-.swq
+*.swp
+*.swq
