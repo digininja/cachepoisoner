@@ -14,5 +14,11 @@ func (c App) Index() revel.Result {
 	randomSource := rand.NewSource(time.Now().UnixNano())
 	random := rand.New(randomSource)
 	randomNumber := random.Intn(10000)
-	return c.Render(randomNumber)
+
+	host := c.Request.Host
+	if c.Request.Header.Get("X-Forwarded-Host") != "" {
+		host = c.Request.Header.Get("X-Forwarded-Host")
+	}
+
+	return c.Render(randomNumber, host)
 }

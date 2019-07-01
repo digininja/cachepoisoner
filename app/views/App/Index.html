@@ -10,12 +10,22 @@
   </div>
 </header>
 
-<div class="container">
-  <div class="row">
-    <div class="span6">
-		The random number is: {{.randomNumber}}
-    </div>
-  </div>
-</div>
+<p>
+	The host is: {{raw .host}}
+</p>
+
+<p>
+	<img src="http://{{raw .host}}/public/img/ninja.png" alt="ninja" />
+	img src={{raw .host}} /public/img/ninja.png alt="ninja" />
+</p>
+	p class="{{raw .host}}">ninja</p>
+
+<p>
+	The random number is: {{.randomNumber}}
+</p>
+
+<p>
+	<a href="https://portswigger.net/blog/practical-web-cache-poisoning">Burp blog post</a>
+</p>
 
 {{template "footer.html" .}}
