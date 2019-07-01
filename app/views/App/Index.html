@@ -15,10 +15,32 @@
 </p>
 
 <p>
+	Host in htmlSafe is: {{htmlSafe .host}}
+</p>
+
+<p>
 	<img src="http://{{raw .host}}/public/img/ninja.png" alt="ninja" />
+	<img src="http://{{htmlSafe .host}}/public/img/ninja.png" alt="ninja" />
 	img src={{raw .host}} /public/img/ninja.png alt="ninja" />
 </p>
-	p class="{{raw .host}}">ninja</p>
+	<p class="{{raw .host}}">ninja</p>
+	<p class="{{htmlSafe .host}}">safe ninja</p>
+
+
+
+<p>
+The name is: {{raw .host}}
+</p>
+
+<p>
+The name in htmlSafe is: {{htmlSafe .host}}
+</p>
+
+<p class="{{raw .host}}">aaaa</p>
+<p class="{{htmlSafe .host}}">aaaa</p>
+
+
+
 
 <p>
 	The random number is: {{.randomNumber}}
