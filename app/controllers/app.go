@@ -26,8 +26,8 @@ func init() {
 		return a == 0 || a == b
 	}
 
-	revel.TemplateFuncs["htmlSafe"] = func(html string) template.HTML {
-		return (template.HTML(fmt.Sprintf("%s---%s", html, html)))
+	revel.TemplateFuncs["htmlAttr"] = func(html string) template.HTMLAttr {
+		return (template.HTMLAttr(fmt.Sprintf("%s", html)))
 	}
 
 }
@@ -38,10 +38,10 @@ func (c App) Index() revel.Result {
 	randomNumber := random.Intn(10000)
 
 	host := c.Request.Host
-	host = "fred\">x"
 	if c.Request.Header.Get("X-Forwarded-Host") != "" {
 		host = c.Request.Header.Get("X-Forwarded-Host")
 	}
+	url := fmt.Sprintf("src=\"http://%s/public/img/ninja.png\"", host)
 
-	return c.Render(randomNumber, host)
+	return c.Render(randomNumber, host, url)
 }
