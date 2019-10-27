@@ -1,9 +1,9 @@
 <?php
-var_dump ($_SERVER['HTTP_HOST']);
-var_dump ($_SERVER['PHP_SELF']);
 // var_dump ($_SERVER);
-// This is prevent all caching
-// header ("X-No-Cache: 0");
+
+// Tell the cache to cache differently for
+// each different user agent string
+
 header ("Vary: User-Agent");
 
 $host = $_SERVER['HTTP_HOST'];
@@ -24,4 +24,3 @@ function clean_display_string ($str) {
 <p>A random number is: <?=mt_rand();?></p>
 
 <img src="http://<?=$host?>/poison.png" alt="Bottle of poison" />
-
