@@ -41,6 +41,19 @@ sub vcl_deliver {
 }
 ```
 
+## Apache
+The following entry in the Apache config will enable the proxy pass through to Varnish running on localhost:82. The `ProxyPreserveHost` setting will make sure the `Host` header is kept the same as in the original request. Without that, the `Host` is set to `localhost:82` and so Varnish can't differentiate requests to different vhosts and so does one big cache rather than one per vhost.
+
+```
+<IfModule mod_proxy.c>
+	ProxyRequests Off
+	ProxyPreserveHost on
+	ProxyPass /.well-known/acme-challenge/ !
+	ProxyPass "/" "http://localhost:82/"
+	ProxyPassReverse "/" "http://localhost:82/"
+</IfModule>
+```
+
 ## Revel
 
 Set the revel app to listen on port 9090
