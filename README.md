@@ -54,6 +54,8 @@ The following entry in the Apache config will enable the proxy pass through to V
 </IfModule>
 ```
 
+Taken from here <https://www.ctrl.blog/entry/how-to-httpd-reverseproxy-hostheader.html>
+
 ## Revel
 
 Set the revel app to listen on port 9090
