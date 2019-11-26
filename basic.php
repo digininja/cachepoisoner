@@ -28,7 +28,7 @@ if (array_key_exists ("HTTP_X_FORWARDED_HOST", $_SERVER)) {
 		Use this weakness to poison every visitor with a nice bit of Cross-Site Scripting.
 	</p>
 	<p>
-		<a href="/">&laquo; Back</a>
+		<a href="http://poison.test">&laquo; Back</a>
 	</p>
 </body>
 </html>
