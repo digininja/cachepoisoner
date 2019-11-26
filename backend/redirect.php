@@ -22,6 +22,6 @@ function clean_display_string ($str) {
 <p>A random number is: <?=mt_rand();?></p>
 <p>This page has moved to a <a href="<?=clean_display_string ($redirect)?>">
 <?=clean_display_string ($redirect)?></a>.</p> 
-<img src="/poison.png" alt="Bottle of poison" />
+<img src="/images/poison.png" alt="Bottle of poison" />
 </body>  
 </html>     

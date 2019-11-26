@@ -30,7 +30,7 @@ function clean_display_string ($str) {
 This page caches different responses based on the provided user agent string. Poison it in a way that only affects users of a specific browser.
 </p>
 <p>
-<img src="http://<?=$host?>/poison.png" alt="Bottle of poison" />
+<img src="http://<?=$host?>/images/poison.png" alt="Bottle of poison" />
 </p>
 <p><a href="/index.php">Back to home</a></p>
 </body>
