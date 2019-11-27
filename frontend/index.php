@@ -25,7 +25,7 @@ $host = "http://" . $rand . ".poison.test:81";
 		A basic poison, affecting everyone, through the host name.
 	</p>
 <p><a href="<?=$host?>/basic.php">Go to lab</a></p>
-<h2>User Agent</h2>
+<h2>Selective Poisoning</h2>
 <p>
 Poison a specific user agent. To test this, use two different browsers or a user agent switcher, to see how the poisoning affects one and not the other.
 </p>
@@ -36,7 +36,7 @@ Use a bug in internal redirection to bounce everyone who tries to access the pag
 </p>
 <p>
 From my testing, I was not able to get PHP and Varnish to work together to cache a 301 or 302 redirect, so this exercise uses a meta redirect.
-<p><a href="<?=$host?>/ua.php">Go to exercise</a></p>
+<p><a href="<?=$host?>/redirect.php">Go to exercise</a></p>
 <h2>Timing</h2>
 <p>
 Use a bug in internal redirection to bounce everyone who tries to access the page to one you control.
