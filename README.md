@@ -1,62 +1,27 @@
-# Cache Poisoner
+# Cache Poison Lab
 
-A lab to play with web cache poisoning
+## How to configure Varnish Startup
 
-## Varnish
+You can't edit `/etc/default/varnish` any more, it is ignored. See this
 
-Edit `/etc/systemd/system/varnish.service` or `/etc/systemd/system/multi-user.target.wants/varnish.service` and change the `ExecStart` line to this:
+<https://github.com/varnish/Varnish-Cache/pull/92#>
 
-```
-ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :81 -T localhost:6082 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,256m
-```
 
-`-a` says to listen on the host:port specified
-`-T` is the management interface - keep this to localhost or set it to `none` to disable it.
-
-After changing the service file, you need to reload it:
+## X-Forwarded-For
 
 ```
-systemctl daemon-reload
-```
-
-Then edit `/etc/varnish/default.vcl` and add the following:
+curl http://42127f-poison.digi.ninja:81/basic.php -H "X-Forwarded-Host: test.com\"><script>alert(1)</script>" -i
 
 ```
-vcl 4.0;
 
-backend default {
-    .host = "127.0.0.1";
-    .port = "9090";
-}
+## Apache
 
-sub vcl_recv {
-}
+The following proxy modules must both be enabled:
 
-sub vcl_backend_response {
-	# The default TTL
-	set beresp.ttl = 30s;
-}
-
-sub vcl_deliver {
-}
-```
-
-## Revel
-
-Set the revel app to listen on port 9090
-
-Start with
+* proxy
+* proxy_http
 
 ```
-revel run -a github.com/digininja/cachepoisoner/
+a2enmod proxy proxy_http
 ```
 
-To remove the built in cookies:
-
-<https://github.com/revel/revel/issues/323>
-
-## References
-
-[Varnish tutorial](https://www.varnish-software.com/wiki/content/tutorials/varnish/varnish_ubuntu.html)
-
-[Burp blog post](https://portswigger.net/blog/practical-web-cache-poisoning)
