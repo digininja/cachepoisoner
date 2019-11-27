@@ -9,7 +9,12 @@ header ("Vary: User-Agent");
 $host = $_SERVER['HTTP_HOST'];
 
 if (array_key_exists ("HTTP_X_FORWARDED_HOST", $_SERVER)) {
-	$host = $_SERVER['HTTP_X_FORWARDED_HOST'];
+    $forwarded = explode (",", $_SERVER['HTTP_X_FORWARDED_HOST']);
+    if (is_array ($forwarded)) {
+        $host = array_shift ($forwarded);
+    } else {
+        $host = $_SERVER['HTTP_X_FORWARDED_HOST'];
+    }   
 }
 
 function clean_display_string ($str) {
@@ -24,11 +29,11 @@ function clean_display_string ($str) {
 </head>
 <body>
 <h1>Targeted Poisoning</h1>
-<p>A random number is <?=mt_rand();?>.</p>
-<p>Your user agent is: <?=clean_display_string ($_SERVER['HTTP_USER_AGENT'])?></p>
 <p>
 This page caches different responses based on the provided user agent string. Poison it in a way that only affects users of a specific browser.
 </p>
+<p>A random number is <?=mt_rand();?>.</p>
+<p>Your user agent is: <?=clean_display_string ($_SERVER['HTTP_USER_AGENT'])?></p>
 <p>
 <img src="http://<?=$host?>/images/poison.png" alt="Bottle of poison" />
 </p>
