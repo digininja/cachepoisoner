@@ -37,6 +37,8 @@ After changing the service file, you need to reload it:
 systemctl daemon-reload
 ```
 
+This will help when setting up for the redirection lab <https://varnish-cache.org/docs/3.0/tutorial/devicedetection.html>.
+
 ## References
 
 [Varnish tutorial](https://www.varnish-software.com/wiki/content/tutorials/varnish/varnish_ubuntu.html)
