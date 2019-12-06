@@ -1,0 +1,12 @@
+$TTL	300
+
+@	IN	SOA	poison.test. root.poison.test. (
+	2019120101;
+	8H;
+	2H;
+	2W;
+	1D );
+
+@	IN	NS	ns.digi.lab.
+@	IN	A	192.168.0.2
+*	IN	A	192.168.0.2

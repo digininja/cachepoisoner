@@ -1,0 +1,4 @@
+zone "poison.test" {
+	type master;
+	file "/etc/bind/db.poison.test";
+};
