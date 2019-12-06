@@ -1,4 +1,4 @@
 <?php
-header ("location: http://poison.test");
+header ("location: http://poison.digi.ninja");
 exit;
 ?>

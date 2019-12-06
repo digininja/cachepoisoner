@@ -1,7 +1,7 @@
 <?php
 $rand = substr (md5(time() . mt_rand()), 0, 8);
-$host = "http://" . $rand . ".poison.digi.ninja:81";
 $host = "http://" . $rand . ".poison.test:81";
+$host = "http://" . $rand . ".poison.digi.ninja:81";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -21,7 +21,7 @@ $host = "http://" . $rand . ".poison.test:81";
 	</p>
 	<h2>Basic</h2>
 	<p>
-		A basic poison, affecting everyone, through the host name.
+		A basic poison, affecting all visitors to the page.
 	</p>
 	<p><a href="<?=$host?>/basic.php">Go to lab</a></p>
 	<h2>Selective Poisoning</h2>
@@ -31,7 +31,7 @@ $host = "http://" . $rand . ".poison.test:81";
 	<p><a href="<?=$host?>/ua.php">Go to lab</a></p>
 	<h2>Redirects</h2>
 	<p>
-		Use a bug in internal redirection to bounce everyone who tries to access the page to one you control.
+		Use a bug in internal redirection to redirect all Chrome users who access the page to one you control.
 	</p>
 	<p>
 		From my testing, I was not able to get PHP and Varnish to work together to cache a 301 or 302 redirect, so this exercise uses a meta redirect.
