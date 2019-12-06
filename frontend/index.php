@@ -1,6 +1,5 @@
 <?php
 $rand = substr (md5(time() . mt_rand()), 0, 8);
-$rand = "18dd0efe";
 $host = "http://" . $rand . ".poison.digi.ninja:81";
 $host = "http://" . $rand . ".poison.test:81";
 ?>
@@ -18,31 +17,29 @@ $host = "http://" . $rand . ".poison.test:81";
 		I'll give a few pointers in the various labs, but not too much as James has given a good walk through of exploiting each issue in his post.
 	</p>
 	<p>
-		To prevent people interfering with each other as they run their tests, everyone gets their own host to work on. For this session, your host will be <?=$host?>, but this will change whenever you refresh this page.
+		To prevent people interfering with each other as they run their tests, everyone gets their own host to work on. For this session, your host will be <strong><?=$host?></strong>, but this will change whenever you refresh this page.
 	</p>
 	<h2>Basic</h2>
 	<p>
 		A basic poison, affecting everyone, through the host name.
 	</p>
-<p><a href="<?=$host?>/basic.php">Go to lab</a></p>
-<h2>Selective Poisoning</h2>
-<p>
-Poison a specific user agent. To test this, use two different browsers or a user agent switcher, to see how the poisoning affects one and not the other.
-</p>
-<p><a href="<?=$host?>/ua.php">Go to lab</a></p>
-<h2>Redirects</h2>
-<p>
-Use a bug in internal redirection to bounce everyone who tries to access the page to one you control.
-</p>
-<p>
-From my testing, I was not able to get PHP and Varnish to work together to cache a 301 or 302 redirect, so this exercise uses a meta redirect.
-<p><a href="<?=$host?>/redirect.php">Go to exercise</a></p>
-<h2>Timing</h2>
-<p>
-Use a bug in internal redirection to bounce everyone who tries to access the page to one you control.
-</p>
-<p>
-All the other exercises give the <code>Age</code> header so you know how long you have to wait for the current cache entry to expire so you can launch your attack. This exercise hides the value so you have to derive it for yourself. The value is between 10 and 30 seconds and you do not need to DoS the server to work it out.
-<p><a href="<?=$host?>/timing.php">Go to exercise</a></p>
+	<p><a href="<?=$host?>/basic.php">Go to lab</a></p>
+	<h2>Selective Poisoning</h2>
+	<p>
+		Poison a specific user agent. To test this, use two different browsers or a user agent switcher, to see how the poisoning affects one and not the other.
+	</p>
+	<p><a href="<?=$host?>/ua.php">Go to lab</a></p>
+	<h2>Redirects</h2>
+	<p>
+		Use a bug in internal redirection to bounce everyone who tries to access the page to one you control.
+	</p>
+	<p>
+		From my testing, I was not able to get PHP and Varnish to work together to cache a 301 or 302 redirect, so this exercise uses a meta redirect.
+	</p>
+	<p><a href="<?=$host?>/redirect.php">Go to exercise</a></p>
+	<h2>Timing</h2>
+	<p>
+		All the other exercises give the <code>Age</code> header so you know how long you have to wait for the current cache entry to expire so you can launch your attack. This exercise hides the value so you have to derive it for yourself. The value is between 10 and 30 seconds and you do not need to DoS the server to work it out.
+	<p><a href="<?=$host?>/timing.php">Go to exercise</a></p>
 </body>
 </html>
