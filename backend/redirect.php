@@ -47,9 +47,7 @@ if (isset ($redirect)) {
 		<?php
 	} else {
 		?>
-		<p>
-			This content is for all non-Chrome users.
-		</p>
+		<p>This content is for all non-Chrome users.</p>
 		<?php
 	}
 	?>

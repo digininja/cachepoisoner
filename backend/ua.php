@@ -17,10 +17,6 @@ if (array_key_exists ("HTTP_X_FORWARDED_HOST", $_SERVER)) {
     }   
 }
 
-function clean_display_string ($str) {
-	return htmlentities ($str);
-}
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -33,7 +29,7 @@ function clean_display_string ($str) {
 	<p>
 		This page caches different responses based on the provided user agent string. Poison it in a way that only affects users of a specific browser.
 	</p>
-	<p>Your user agent is: <?=clean_display_string ($_SERVER['HTTP_USER_AGENT'])?></p>
+	<p>Your user agent is: <strong><?=htmlentities ($_SERVER['HTTP_USER_AGENT'])?></strong></p>
 	<p>
 		<img src="http://<?=$host?>/images/poison.png" alt="Bottle of poison" />
 	</p>
