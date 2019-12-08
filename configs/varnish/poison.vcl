@@ -18,7 +18,14 @@ backend secret {
 
 backend digininja {
 	.host = "digi.ninja";
-	.port = "443";
+	.port = "7777";
+	# HTTPS as a backend
+	# https://stackoverflow.com/questions/16840673/using-varnish-with-saas-https-backend-servers
+}
+
+backend dvwa {
+	.host = "dvwa.test";
+	.port = "80";
 }
 
 sub device_detect {
@@ -34,7 +41,6 @@ sub vcl_recv {
 	#
 	# Typically you clean up the request here, removing cookies you don't need,
 	# rewriting the request, etc.
-
 	
 	unset req.http.Cache-Control;
 	unset req.http.Cookie;
@@ -49,6 +55,11 @@ sub vcl_recv {
 		}
 		if (req.http.X-forwarded-host ~ "^digi.ninja") {
 			set req.backend_hint = digininja;
+			set req.url = "/test.php";
+			set req.http.host = "digi.ninja";
+		}
+		if (req.http.X-forwarded-for ~ "^dvwa.test") {
+			set req.backend_hint = dvwa;
 			set req.url = "/";
 		}
 	}
@@ -72,8 +83,6 @@ sub vcl_deliver {
 }
 
 sub vcl_backend_fetch {
-#	set bereq.host = "dvwa.test";
-	# set bereq.backend = goto.dns_backend(bereq.http.host);
 }
 
 sub vcl_backend_response {
@@ -102,7 +111,7 @@ sub vcl_backend_response {
 	if (bereq.url ~ "/timing.php") {
 		set beresp.ttl = 16 s;
 	} else {
-		set beresp.ttl = 20 s;
+		set beresp.ttl = 2 s;
 	}
 	unset beresp.http.Set-Cookie;
 	return (deliver);
