@@ -21,7 +21,7 @@ backend secret {
 
 backend digininja {
 	.host = "digi.ninja";
-	.port = "80";
+	.port = "443";
 }
 
 backend dvwa {
