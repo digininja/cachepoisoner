@@ -2,13 +2,35 @@
 # new 4.0 format.
 vcl 4.0;
 
+import cookie;
+# import named;
+
+# Useful docs
+# https://book.varnish-software.com/4.0/chapters/VCL_Subroutines.html
+
 # Default backend definition. Set this to point to your content server.
 backend default {
 	.host = "127.0.0.1";
 	.port = "83";
 }
 
+backend secret {
+	.host = "secret.digi.ninja";
+	.port = "80";
+}
+
+backend digininja {
+	.host = "digi.ninja";
+	.port = "80";
+}
+
+backend dvwa {
+	.host = "dvwa.test";
+	.port = "80";
+}
+
 sub device_detect {
+	# A custom function to generalise a UA down to Chrome or other
 	set req.http.X-UA-Browser = "other";
 	if (req.http.User-Agent ~ "(?i)chrome") {
 		set req.http.X-UA-Browser = "chrome";
@@ -21,11 +43,32 @@ sub vcl_recv {
 	# Typically you clean up the request here, removing cookies you don't need,
 	# rewriting the request, etc.
 
-	# Call a function
-	call device_detect;
 	
 	unset req.http.Cache-Control;
 	unset req.http.Cookie;
+
+	set req.http.X-Host = req.http.Host;
+	set req.http.X-URL = req.http.URL;
+	set req.http.Host = "dvwa.test";
+
+
+	if (req.url ~ "^/routing.php") {
+		if (req.http.X-forwarded-host ~ "^secret.digi.ninja") {
+			set req.backend_hint = secret;
+			set req.url = "/";
+		}
+		if (req.http.X-forwarded-for ~ "^digi.ninja") {
+			set req.backend_hint = digininja;
+			set req.url = "/";
+		}
+		if (req.http.X-forwarded-for ~ "^dvwa.test") {
+			set req.backend_hint = dvwa;
+			set req.url = "/";
+		}
+	}
+
+	# Call a function
+	call device_detect;
 }
 
 sub vcl_deliver {
@@ -42,6 +85,11 @@ sub vcl_deliver {
 	}
 }
 
+sub vcl_backend_fetch {
+#	set bereq.host = "dvwa.test";
+	# set bereq.backend = goto.dns_backend(bereq.http.host);
+}
+
 sub vcl_backend_response {
 	# Happens after we have read the response headers from the backend.
 	#
@@ -54,21 +102,22 @@ sub vcl_backend_response {
 		set beresp.http.status = 720;
 	}
 
-	if (beresp.ttl <= 0s ||
-		beresp.http.Set-Cookie ||
-		beresp.http.X-No-Cache ||
-		beresp.http.Vary == "*") {
-		/*
-		 * Mark as not cacheable for the next 10 seconds
-	 	 */
-		set beresp.ttl = 10 s;
-		set beresp.uncacheable = true;
-		return (deliver);
-	}
+#	if (beresp.ttl <= 0s ||
+##		beresp.http.Set-Cookie ||
+#		beresp.http.X-No-Cache ||
+#		beresp.http.Vary == "*") {
+#		/*
+#		 * Mark as not cacheable for the next 10 seconds
+#	 	 */
+#		set beresp.ttl = 10 s;
+#		set beresp.uncacheable = true;
+#		return (deliver);
+#	}
 	if (bereq.url ~ "/timing.php") {
 		set beresp.ttl = 16 s;
 	} else {
 		set beresp.ttl = 20 s;
 	}
+	unset beresp.http.Set-Cookie;
 	return (deliver);
 }
