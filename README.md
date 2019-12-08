@@ -39,6 +39,20 @@ systemctl daemon-reload
 
 This will help when setting up for the redirection lab <https://varnish-cache.org/docs/3.0/tutorial/devicedetection.html>.
 
+#### Custom Hashing
+
+<https://serverfault.com/questions/754613/how-to-hash-based-on-host-path-in-varnish>
+<https://varnish-cache.org/docs/trunk/users-guide/vcl-hashing.html>
+
+Probably want to write a custom hash sub which ignores the host and just looks at the URL, maybe:
+
+```
+sub vcl_hash {
+	hash_data(req.url);
+	return (lookup);
+}
+```
+
 ## References
 
 [Varnish tutorial](https://www.varnish-software.com/wiki/content/tutorials/varnish/varnish_ubuntu.html)
