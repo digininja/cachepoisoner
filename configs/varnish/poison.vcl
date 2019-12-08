@@ -2,9 +2,6 @@
 # new 4.0 format.
 vcl 4.0;
 
-import cookie;
-# import named;
-
 # Useful docs
 # https://book.varnish-software.com/4.0/chapters/VCL_Subroutines.html
 
