@@ -45,6 +45,8 @@ This will help when setting up for the redirection lab <https://varnish-cache.or
 
 [Burp blog post](https://portswigger.net/blog/practical-web-cache-poisoning)
 
+[Custom Hashes](https://varnish-cache.org/docs/trunk/users-guide/vcl-hashing.html) - Not related to the project, but interesting comment that hashing is based on Host header which is case sensitive. Wonder if things get leaked when providing upper case Host?
+
 ## Hints
 
 ### Basic Lab
