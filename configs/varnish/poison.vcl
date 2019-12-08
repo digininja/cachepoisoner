@@ -21,11 +21,6 @@ backend digininja {
 	.port = "443";
 }
 
-backend dvwa {
-	.host = "dvwa.test";
-	.port = "80";
-}
-
 sub device_detect {
 	# A custom function to generalise a UA down to Chrome or other
 	set req.http.X-UA-Browser = "other";
@@ -46,20 +41,14 @@ sub vcl_recv {
 
 	set req.http.X-Host = req.http.Host;
 	set req.http.X-URL = req.http.URL;
-	set req.http.Host = "dvwa.test";
-
 
 	if (req.url ~ "^/routing.php") {
 		if (req.http.X-forwarded-host ~ "^secret.digi.ninja") {
 			set req.backend_hint = secret;
 			set req.url = "/";
 		}
-		if (req.http.X-forwarded-for ~ "^digi.ninja") {
+		if (req.http.X-forwarded-host ~ "^digi.ninja") {
 			set req.backend_hint = digininja;
-			set req.url = "/";
-		}
-		if (req.http.X-forwarded-for ~ "^dvwa.test") {
-			set req.backend_hint = dvwa;
 			set req.url = "/";
 		}
 	}

@@ -42,7 +42,7 @@ $host = "http://" . $rand . ".poison.digi.ninja:81";
 		All the other exercises give the <code>Age</code> header so you know how long you have to wait for the current cache entry to expire so you can launch your attack. This exercise hides the value so you have to derive it for yourself. The value is between 10 and 30 seconds and you do not need to DoS the server to work it out.
 	</p>
 	<p><a href="<?=$host?>/timing.php">Go to exercise</a></p>
-	<h2>Routing</h2>
+	<h2>Routing - Broken</h2>
 	<p>
 		This server hosts both this site and my main "digi.ninja" site, it also hosts a "secret" site. Use the broken caching to redirect users to my main site or to access the secret site.
 	</p>
