@@ -17,15 +17,24 @@ backend secret {
 }
 
 backend digininja {
-	.host = "digi.ninja";
+	.host = "127.0.0.1";
 	.port = "7777";
 	# HTTPS as a backend
 	# https://stackoverflow.com/questions/16840673/using-varnish-with-saas-https-backend-servers
 }
 
-backend dvwa {
-	.host = "dvwa.test";
-	.port = "80";
+sub vcl_hash {
+	if (req.url ~ "^/routing.php") {
+		hash_data(req.http.x-host);
+	} else {
+		hash_data(req.url);
+		if (req.http.host) {
+			hash_data(req.http.host);
+		} else {
+			hash_data(server.ip);
+		}
+	}
+	return (lookup);
 }
 
 sub device_detect {
@@ -45,27 +54,25 @@ sub vcl_recv {
 	unset req.http.Cache-Control;
 	unset req.http.Cookie;
 
-	set req.http.X-Host = req.http.Host;
-	set req.http.X-URL = req.http.URL;
-
 	if (req.url ~ "^/routing.php") {
+		set req.http.x-host = req.http.host;
+
 		if (req.http.X-forwarded-host ~ "^secret.digi.ninja") {
+			set req.http.host = "secret.digi.ninja";
 			set req.backend_hint = secret;
 			set req.url = "/";
 		}
 		if (req.http.X-forwarded-host ~ "^digi.ninja") {
-			set req.backend_hint = digininja;
-			set req.url = "/test.php";
 			set req.http.host = "digi.ninja";
-		}
-		if (req.http.X-forwarded-for ~ "^dvwa.test") {
-			set req.backend_hint = dvwa;
-			set req.url = "/";
+			set req.backend_hint = digininja;
+			set req.url = "/routing.php";
 		}
 	}
 
-	# Call a function
-	call device_detect;
+	if (req.url ~ "^/redirect.php") {
+		# Call a function
+		call device_detect;
+	}
 }
 
 sub vcl_deliver {
@@ -111,7 +118,7 @@ sub vcl_backend_response {
 	if (bereq.url ~ "/timing.php") {
 		set beresp.ttl = 16 s;
 	} else {
-		set beresp.ttl = 2 s;
+		set beresp.ttl = 30 s;
 	}
 	unset beresp.http.Set-Cookie;
 	return (deliver);
