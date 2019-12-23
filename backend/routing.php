@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>Routing - Cache Poisoning Lab</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /> 
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </head>
 <body>
 	<h1>Routing Poisoning Lab</h1>

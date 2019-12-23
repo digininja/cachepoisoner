@@ -15,6 +15,8 @@ if (array_key_exists ("HTTP_X_FORWARDED_HOST", $_SERVER)) {
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>Basic - Cache Poisoning Lab</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /> 
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<meta property="og:title" content="Basic Poisoning Lab" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="http://<?=$host?>/cms/social.png" />

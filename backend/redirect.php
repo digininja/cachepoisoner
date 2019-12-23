@@ -29,6 +29,8 @@ if (array_key_exists ("HTTP_X_UA_BROWSER", $_SERVER) &&
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Redirection - Cache Poisoning Lab</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /> 
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <?php
 if (isset ($redirect)) {
 	?>
