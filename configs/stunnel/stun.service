@@ -1,0 +1,14 @@
+[Unit]
+Description=Stunnel used for web cache poisoning lab
+After=network.target
+
+[Service]
+Type=simple
+User=stun
+WorkingDirectory=/home/stun
+ExecStart=/usr/bin/stunnel /home/robin/poison/configs/stunnel/stun.conf
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

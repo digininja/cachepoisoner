@@ -7,16 +7,14 @@
 	<h1>Routing Poisoning Lab</h1>
 	<p>A random number is: <?=mt_rand();?></p>
 	<p>
-		This page server also hosts the site "digi.ninja".
+		This server also hosts the site "digi.ninja".
 	</p>
 	<p>
-		Manipulate the forwarding requests to poison routing to send visitors to my main site instead of this one or to access the secret content.
+		Manipulate the forwarding requests to poison routing to send visitors to my main site instead of this one.
 	</p>
 	<p>
-		As a bonus, the proxy is mis-configured, and can also be used to access, but not cache, a special "secret" internal site.
+		As a bonus, the proxy is misconfigured and can also be used to access, but not cache, a special "secret" internal site.
 	</p>
-	<p>
-		<a href="/index.php">&laquo; Back</a>
-	</p>
+	<p><a href="/index.php">&laquo; Back to home</a></p>
 </body>
 </html>

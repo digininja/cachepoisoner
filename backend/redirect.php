@@ -52,5 +52,6 @@ if (isset ($redirect)) {
 	}
 	?>
 	<img src="/images/poison.png" alt="Bottle of poison" />
+	<p><a href="/index.php">&laquo; Back to home</a></p>
 </body>
 </html>

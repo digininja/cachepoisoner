@@ -31,8 +31,8 @@ if (array_key_exists ("HTTP_X_FORWARDED_HOST", $_SERVER)) {
 	</p>
 	<p>Your user agent is: <strong><?=htmlentities ($_SERVER['HTTP_USER_AGENT'])?></strong></p>
 	<p>
-		<img src="http://<?=$host?>/images/poison.png" alt="Bottle of poison" />
+		<img src="https://<?=$host?>/images/poison.png" alt="Bottle of poison" />
 	</p>
-	<p><a href="/index.php">Back to home</a></p>
+	<p><a href="/index.php">&laquo; Back to home</a></p>
 </body>
 </html>

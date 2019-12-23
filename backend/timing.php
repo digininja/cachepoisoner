@@ -12,6 +12,6 @@
 	<p>
 		The value is between 10 and 30 seconds and can be calculated without hammering the server too hard.
 	</p>
-	<p><a href="/index.php">Back to home</a></p>
+	<p><a href="/index.php">&laquo; Back to home</a></p>
 </body>
 </html>

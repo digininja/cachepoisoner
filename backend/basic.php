@@ -28,8 +28,6 @@ if (array_key_exists ("HTTP_X_FORWARDED_HOST", $_SERVER)) {
 	<p>
 		Use this weakness to poison every visitor with a nice bit of Cross-Site Scripting.
 	</p>
-	<p>
-		<a href="/index.php">&laquo; Back</a>
-	</p>
+	<p><a href="/index.php">&laquo; Back to home</a></p>
 </body>
 </html>

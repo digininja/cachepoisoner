@@ -7,6 +7,7 @@
 	<p>A random number is: <?=mt_rand();?></p>
 	<p>This page is specially for Chrome users.</p>
 	<img src="/images/poison-chrome.png" alt="Bottle of poison with Chrome logo" />
+	<p><a href="/index.php">&laquo; Back to home</a></p>
 </body>
 </html>
 
