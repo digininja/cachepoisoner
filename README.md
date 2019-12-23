@@ -66,7 +66,11 @@ sub vcl_hash {
 ### Basic Lab
 
 ```
-curl http://42127f-poison.digi.ninja:81/basic.php -H "X-Forwarded-Host: test.com\"><script>alert(1)</script>"
+curl https://42127f-poison.digi.ninja:2443/basic.php -H "X-Forwarded-Host: test.com\"><script>alert(1)</script>"
 ```
 
+### Routing
 
+```
+curl "https://2d31c7e7a.poison.digi.ninja:2443/routing.php" -H "X-forwarded-host: digi.ninja" -i
+```
