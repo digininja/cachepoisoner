@@ -36,5 +36,9 @@ if (array_key_exists ("HTTP_X_FORWARDED_HOST", $_SERVER)) {
 		<img src="https://<?=$host?>/images/poison.png" alt="Bottle of poison" />
 	</p>
 	<p><a href="/index.php">&laquo; Back to home</a></p>
+	<hr />
+	<p>
+		Lab created by Robin Wood - <a href="https://digi.ninja">DigiNinja</a>
+	</p>
 </body>
 </html>

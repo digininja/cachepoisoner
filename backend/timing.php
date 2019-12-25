@@ -15,5 +15,9 @@
 		The value is between 10 and 30 seconds and can be calculated without hammering the server too hard.
 	</p>
 	<p><a href="/index.php">&laquo; Back to home</a></p>
+	<hr />
+	<p>
+		Lab created by Robin Wood - <a href="https://digi.ninja">DigiNinja</a>
+	</p>
 </body>
 </html>

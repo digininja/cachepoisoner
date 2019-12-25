@@ -10,6 +10,9 @@
 	<p>This page is specially for Chrome users.</p>
 	<img src="/images/poison-chrome.png" alt="Bottle of poison with Chrome logo" />
 	<p><a href="/index.php">&laquo; Back to home</a></p>
+	<hr />
+	<p>
+		Lab created by Robin Wood - <a href="https://digi.ninja">DigiNinja</a>
+	</p>
 </body>
 </html>
-

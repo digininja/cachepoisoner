@@ -48,5 +48,9 @@ $host = "https://" . $rand . ".poison.digi.ninja:2443";
 		This server hosts both this site and my main "digi.ninja" site, it also hosts a "secret" site. Use the broken proxy to redirect users to my main site or to access the secret site.
 	</p>
 	<p><a href="<?=$host?>/routing.php">Go to exercise</a></p>
+	<hr />
+	<p>
+		Lab created by Robin Wood - <a href="https://digi.ninja">DigiNinja</a>
+	</p>
 </body>
 </html>

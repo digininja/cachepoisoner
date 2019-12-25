@@ -18,5 +18,9 @@
 		As a bonus, the proxy is misconfigured and can also be used to access, but not cache, a special "secret" internal site.
 	</p>
 	<p><a href="/index.php">&laquo; Back to home</a></p>
+	<hr />
+	<p>
+		Lab created by Robin Wood - <a href="https://digi.ninja">DigiNinja</a>
+	</p>
 </body>
 </html>

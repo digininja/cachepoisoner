@@ -31,5 +31,9 @@ if (array_key_exists ("HTTP_X_FORWARDED_HOST", $_SERVER)) {
 		Use this weakness to poison every visitor with a nice bit of Cross-Site Scripting.
 	</p>
 	<p><a href="/index.php">&laquo; Back to home</a></p>
+	<hr />
+	<p>
+		Lab created by Robin Wood - <a href="https://digi.ninja">DigiNinja</a>
+	</p>
 </body>
 </html>
