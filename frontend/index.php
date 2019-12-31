@@ -8,6 +8,22 @@ $host = "https://" . $rand . ".poison.digi.ninja:2443";
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /> 
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<title>Web Cache Poisoning Lab</title>
+
+	<meta property="og:title" content="DigiNinja - Web Cache Poisoning Lab" />
+	<meta property="og:description" content="A lab to play with various web cache poisoning vulnerabilities." />
+	<meta property="og:url" content="/index.php" />
+	<meta property="og:image" content="https://poison.digi.ninja/web_cache_poisoning.png" />
+	<meta property="og:type" content="website" />
+	<meta property="og:sitename" content="DigiNinja" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="DigiNinja - Web Cache Poisoning Lab" />
+	<meta name="twitter:description" content="A lab to play with various web cache poisoning vulnerabilities." />
+	<meta name="twitter:site" content="@digininja" />
+	<meta name="twitter:creator" content="@digininja" />
+	<meta name="twitter:domain" content="digi.ninja" />
+	<meta name="twitter:site" content="@digininja" />
+	<meta name="twitter:image" content="https://poison.digi.ninja/web_cache_poisoning.png" />
 </head>
 <body>
 	<h1>Web Cache Poisoning Lab</h1>
