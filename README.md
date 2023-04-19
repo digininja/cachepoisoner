@@ -1,6 +1,10 @@
 # Cache Poison Lab
 
-A lab to play with web cache poisoning
+The code behind my [Web Cache Poisoning Lab](https://poison.digi.ninja/).
+
+I'm making this public four years after I put the lab live. I can't remember much about how all this works so if you have questions, I can try to answer them but may struggle.
+
+The notes here are the notes I made when I set it all up, they are not release ready but I've not got time to tidy them up.
 
 ## Setting up the environment
 
